@@ -1,65 +1,24 @@
 import { Routes } from '@angular/router';
-import { NotFound } from './auth/not-found/not-found';
-import { authGuard } from './auth/guards/auth-guard';
-import { Login } from './auth/login/login';
-import { Register } from './auth/register/register';
 import { Layout } from './core/layout/layout';
-import { ForgotPassword } from './auth/forgot-password/forgot-password';
-import { Home } from './home/home';
-import { Data } from './data/data';
+import { Home } from './core/home/home';
+import { NotFound } from './core/not-found/not-found';
 
-// Define the application's routes
+// Dashboard routing with layout
 export const routes: Routes = [
-  {
-    path: 'login',
-    component: Login,
-    title: 'Login',
-  },
-  {
-    path: 'register',
-    component: Register,
-    title: 'Register',
-  },
-  {
-    path: 'forgot-password',
-    component: ForgotPassword,
-    title: 'Forgot Password',
-  },
   {
     path: '',
     component: Layout,
-    canActivate: [authGuard], // Protect the layout and its children
     children: [
       {
         path: '',
-        redirectTo: 'home',
-        pathMatch: 'full',
-      },
-      {
-        path: 'home',
         component: Home,
         title: 'Home',
       },
-      // Add other protected routes here
-      {
-        path: 'data',
-        component: Data,
-        title: 'My Data',
-      },
-      {
-        path: 'profile',
-        component: Home, // Placeholder - replace with actual component
-        title: 'Profile',
-      },
-      {
-        path: 'settings',
-        component: Home, // Placeholder - replace with actual component
-        title: 'Settings',
-      },
+      // Add your dashboard routes here
     ],
   },
   {
-    path: '**', // Wildcard route for 404
+    path: '**',
     component: NotFound,
     title: '404 - Not Found',
   },

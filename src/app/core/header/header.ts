@@ -1,20 +1,13 @@
-import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
-import { AsyncPipe } from '@angular/common';
-import { Auth, User } from '../../auth/services/auth';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [AsyncPipe],
+  imports: [RouterModule],
   templateUrl: './header.html',
   styleUrl: './header.scss',
 })
 export class Header {
-  private auth = inject(Auth);
-
-  user$ = this.auth.getUserState();
-
-  logout(): void {
-    this.auth.logout();
-  }
+  // Add your header logic here
 }

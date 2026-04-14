@@ -28,12 +28,14 @@ interface NavItem {
 export class Sidenav {
   private router = inject(Router);
 
-  // Navigation items with proper routing
+  // Navigation items - customize for your dashboard
   navItems = signal<NavItem[]>([
-    { label: 'Home', link: '/home', icon: '🏠', visited: false },
-    { label: 'My Data', link: '/data', icon: '📊', visited: false },
-    { label: 'Profile', link: '/profile', icon: '👤', visited: false },
-    { label: 'Settings', link: '/settings', icon: '⚙️', visited: false },
+    { label: 'Home', link: '/', icon: '🏠', visited: false },
+    // Add your dashboard navigation items here
+    // Examples:
+    // { label: 'Analytics', link: '/analytics', icon: '📊', visited: false },
+    // { label: 'Users', link: '/users', icon: '👥', visited: false },
+    // { label: 'Settings', link: '/settings', icon: '⚙️', visited: false },
   ]);
 
   isCollapsed = signal(false);
